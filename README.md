@@ -13,7 +13,16 @@ We recommend using Anaconda3 as it already includes many common packages.
 
 We recommend using 4~16 GPUs with at least 11 GB memory to train our model.
 
+## Modules I load on RC
+
+module load Anaconda3/5.0.1-fasrc01
+module load cuda/9.0-fasrc02 cudnn/7.4.1.5_cuda9.0-fasrc01
+module load gcc/4.9.3-fasrc01
+
+
 ## Installation
+
+Please use gcc4.9 when building the operators.
 
 Clone this repo to `$UPSNet_ROOT`
 
@@ -69,6 +78,32 @@ Because the previous codes use many relative path and would cause error when you
 
 ## Potential Problems You May Meet
 
+- When Building the operators: 
+    - Error:  #error -- unsupported GNU version! gcc versions later than 6 are not supported!
+              ^~~~~
+            error: command '/n/helmod/apps/centos7/Core/cuda/9.0-fasrc02/bin/nvcc' failed with exit status 
+    - Solution: Downgrade the gcc to 4.9
+
+- When runing, can't import cv2
+    - Error: ImportError: /n/helmod/apps/centos7/Core/gcc/4.9.3-fasrc01/lib64/libstdc++.so.6: version \`GLIBCXX_3.4.21\' not found (required by /n/home05/xingyu/.conda/envs/ups/lib/python3.6/site-packages/cv2.cpython-36m-x86_64-linux-gnu.so)
+    - Solution: Change gcc version to 7+ 
+    
+- Undefined Symbol:
+    - Error: 
+    Traceback (most recent call last): File "upsnet/upsnet_end2end_test.py", line 44, in <module> from upsnet.models import * File "upsnet/../upsnet/models/__init__.py", line 1, in <module> from .resnet_upsnet import resnet_50_upsnet, resnet_101_upsnet File "upsnet/../upsnet/models/resnet_upsnet.py", line 22, in <module> from upsnet.models.resnet import get_params, resnet_rcnn, ResNetBackbone File "upsnet/../upsnet/models/resnet.py", line 21, in <module> from upsnet.operators.modules.deform_conv import DeformConv File "upsnet/../upsnet/operators/modules/deform_conv.py", line 22, in <module> from upsnet.operators.functions.deform_conv import DeformConvFunction File "upsnet/../upsnet/operators/functions/deform_conv.py", line 21, in <module> from .._ext.deform_conv import deform_conv_cuda ImportError: upsnet/../upsnet/operators/_ext/deform_conv/deform_conv_cuda.cpython-36m-x86_64-linux-gnu.so: undefined symbol: _ZN6caffe26detail37_typeMetaDataInstance_preallocated_32E
+    
+    - Solution:
+    pip install -U torchvision==0.4.0
+
+- Segmentation Error:
+    - Error: Core Dump, Segmentation Error
+    
+    - Solution:
+    Maybe pytorch version you used to build the operator is different from the pytorch version you used to run experiments. Please double check the python env/pytorch version and try to rebuild the operators (don't forget to delete upsnet/operators/build folder first)
+    
+- Dataset(Division Zero):
+
+Please make sure the data are in data/cityscapes/images/,data/cityscapes/annotations/, data/cityscapes/labels/, data/cityscapes/panoptic/, and the path 
 
 
 ------------------------------------------------------------------------------------------------------------------
