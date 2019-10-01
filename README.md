@@ -16,9 +16,12 @@ We recommend using 4~16 GPUs with at least 11 GB memory to train our model.
 ## Modules I load on RC
 
 module load Anaconda3/5.0.1-fasrc01
+
 module load cuda/9.0-fasrc02 cudnn/7.4.1.5_cuda9.0-fasrc01
+
 module load gcc/4.9.3-fasrc01
 
+Please use torchvision == 0.4.0
 
 ## Installation
 
@@ -101,9 +104,11 @@ Because the previous codes use many relative path and would cause error when you
     - Solution:
     Maybe pytorch version you used to build the operator is different from the pytorch version you used to run experiments. Please double check the python env/pytorch version and try to rebuild the operators (don't forget to delete upsnet/operators/build folder first)
     
-- Dataset(Division Zero):
-
-Please make sure the data are in data/cityscapes/images/,data/cityscapes/annotations/, data/cityscapes/labels/, data/cityscapes/panoptic/, and the path 
+- Dataset:
+    -Error: Division Zero
+    
+    - Solution:
+    Please make sure the data are in data/cityscapes/images/,data/cityscapes/annotations/, data/cityscapes/labels/, data/cityscapes/panoptic/, and the path to the dataset is right 
 
 
 ------------------------------------------------------------------------------------------------------------------
