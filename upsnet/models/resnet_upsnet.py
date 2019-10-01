@@ -86,8 +86,9 @@ class resnet_upsnet(resnet_rcnn):
         pass
 
     def forward(self, data, label=None):
-
+        #print('3.1')
         res2, res3, res4, res5 = self.resnet_backbone(data['data'])
+        #print('111')
         fpn_p2, fpn_p3, fpn_p4, fpn_p5, fpn_p6 = self.fpn(res2, res3, res4, res5)
 
         rpn_cls_score, rpn_cls_prob, rpn_bbox_pred = [], [], []
@@ -96,7 +97,7 @@ class resnet_upsnet(resnet_rcnn):
             rpn_cls_score.append(rpn_cls_score_p)
             rpn_cls_prob.append(rpn_cls_prob_p)
             rpn_bbox_pred.append(rpn_bbox_pred_p)
-
+        #print('333')
         if label is not None:
             self.pyramid_proposal = PyramidProposal(feat_stride=config.network.rpn_feat_stride, scales=config.network.anchor_scales,
                                                     ratios=config.network.anchor_ratios, rpn_pre_nms_top_n=config.train.rpn_pre_nms_top_n,
@@ -109,6 +110,7 @@ class resnet_upsnet(resnet_rcnn):
             rois, _ = self.pyramid_proposal(rpn_cls_prob, rpn_bbox_pred, data['im_info'])
             rois, cls_label, bbox_target, bbox_inside_weight, bbox_outside_weight, mask_rois, mask_target, roi_has_mask, nongt_inds = self.proposal_target(rois, label['roidb'], data['im_info'])
         else:
+            #print('444')
             self.pyramid_proposal = PyramidProposal(feat_stride=config.network.rpn_feat_stride, scales=config.network.anchor_scales,
                                                     ratios=config.network.anchor_ratios, rpn_pre_nms_top_n=config.test.rpn_pre_nms_top_n,
                                                     rpn_post_nms_top_n=config.test.rpn_post_nms_top_n, threshold=config.test.rpn_nms_thresh,
@@ -120,7 +122,9 @@ class resnet_upsnet(resnet_rcnn):
             fcn_rois = fcn_rois.to(rois.device)
             fcn_output = self.fcn_head(*[fpn_p2, fpn_p3, fpn_p4, fpn_p5, fcn_rois])
         else:
+            #print('555')
             fcn_output = self.fcn_head(*[fpn_p2, fpn_p3, fpn_p4, fpn_p5])
+            #print('666')
 
         if label is not None:
 
@@ -194,7 +198,8 @@ class resnet_upsnet(resnet_rcnn):
 
             return output
 
-        else:
+        else :
+            #print('3.2')
 
 
             rcnn_output = self.rcnn([fpn_p2, fpn_p3, fpn_p4, fpn_p5], rois)
@@ -213,7 +218,7 @@ class resnet_upsnet(resnet_rcnn):
                 'fcn_outputs': torch.max(fcn_output['fcn_output'], dim=1)[1],
                 'cls_inds': cls_idx
             }
-
+            #print('3.3')
             # get mask_logits
             cls_prob, mask_rois, cls_idx = self.mask_roi_panoptic(rois, bbox_pred, cls_prob, data['im_info'])
             mask_score = self.mask_branch([fpn_p2, fpn_p3, fpn_p4, fpn_p5], mask_rois)
@@ -225,7 +230,7 @@ class resnet_upsnet(resnet_rcnn):
             cls_idx = cls_idx[keep_inds]
             cls_prob = cls_prob[keep_inds]
             seg_logits, seg_inst_logits = self.seg_term(cls_idx, fcn_output['fcn_output'], mask_rois * 4.0)
-
+            #print('3.4')
             results.update({
                 'panoptic_cls_inds': cls_idx, 
                 'panoptic_cls_probs': cls_prob
@@ -241,7 +246,7 @@ class resnet_upsnet(resnet_rcnn):
             else:
                 panoptic_logits = torch.cat([seg_logits, (seg_inst_logits + mask_logits)], dim=1)
                 panoptic_output = torch.max(F.softmax(panoptic_logits, dim=1), dim=1)[1]
-
+            #print('3.5')
             results.update({
                 'panoptic_outputs': panoptic_output,
             })

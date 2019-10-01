@@ -1,15 +1,15 @@
 ---
-output_path: "./output/upsnet/cityscapes"
+output_path: "/n/pfister_lab2/Lab/xingyu/InstanceSeg/Outputs/upsnet/cityscapes"
 model_prefix: "upsnet_resnet_50_cityscapes_"
 symbol: resnet_50_upsnet
-gpus: '0,1,2,3'
+gpus: '0,1'
 dataset:
   num_classes: 9
   num_seg_classes: 19
   dataset: Cityscapes
-  dataset_path: "./data/cityscapes/"
+  dataset_path: "/n/pfister_lab2/Lab/xingyu/InstanceSeg/UPSNet-master/data/cityscapes/"
   image_set: train
-  root_path: "./data/"
+  root_path: "/n/pfister_lab2/Lab/xingyu/InstanceSeg/UPSNet-master/data/"
   test_image_set: val
 
 network:
@@ -20,7 +20,7 @@ network:
   fcn_head: "FCNHead"
   fcn_num_layers: 2
   has_panoptic_head: true
-  pretrained: "./model/pretrained_model/resnet-50-caffe.pth"
+  pretrained: "/n/pfister_lab2/Lab/xingyu/InstanceSeg/UPSNet-master/model/pretrained_model/resnet-50-caffe.pth"
   
 
 train:

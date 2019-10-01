@@ -209,6 +209,7 @@ class BaseDataset(torch.utils.data.Dataset):
     def evaluate_panoptic(self, pred_pans_2ch, output_dir):
 
         sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname(__file__)), '..', '..', 'lib', 'dataset_devkit'))
+        sys.path.append('/n/pfister_lab2/Lab/xingyu/InstanceSeg/UPSNet-master/lib/dataset_devkit/panopticapi')
 
         from panopticapi.utils import IdGenerator
 

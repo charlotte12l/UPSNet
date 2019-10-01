@@ -59,7 +59,7 @@ class Cityscapes(BaseDataset):
         }
 
         self.panoptic_json_file = os.path.join(config.dataset.dataset_path, 'annotations', 'cityscapes_fine_val.json')
-        self.panoptic_gt_folder = 'data/cityscapes/panoptic'
+        self.panoptic_gt_folder = '/n/pfister_lab2/Lab/xingyu/InstanceSeg/UPSNet-master/data/cityscapes/panoptic'
 
         self.flip = flip
         self.result_path = result_path
@@ -70,7 +70,7 @@ class Cityscapes(BaseDataset):
         if image_sets[0] == 'demoVideo':
             assert len(image_sets) == 1
             assert phase == 'test'
-            im_path = [_.strip() for _ in open('data/cityscapes/split/demoVideo_img.txt', 'r').readlines()]
+            im_path = [_.strip() for _ in open('/n/pfister_lab2/Lab/xingyu/InstanceSeg/UPSNet-master/data/cityscapes/split/demoVideo_img.txt', 'r').readlines()]
             self.roidb = [{'image': _, 'flipped': False} for _ in im_path]
             return
 
@@ -354,7 +354,8 @@ class Cityscapes(BaseDataset):
             output_dir, 'segmentations_' + self.dataset.name + '_results')
         res_file += '.json'
 
-        os.environ['CITYSCAPES_DATASET'] = os.path.join(os.path.dirname(__file__), '../../data/cityscapes')
+        #os.environ['CITYSCAPES_DATASET'] = os.path.join(os.path.dirname(__file__), '../../data/cityscapes')
+        os.environ['CITYSCAPES_DATASET'] = '/n/pfister_lab2/Lab/xingyu/Dataset/Cityscapes'
         os.environ['CITYSCAPES_RESULTS'] = os.path.join(output_dir, 'inst_seg')
         sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname(__file__)), '..', '..', 'lib', 'dataset_devkit', 'cityscapesScripts'))
         sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname(__file__)), '..', '..', 'lib', 'dataset_devkit', 'cityscapesScripts', 'cityscapesscripts', 'evaluation'))

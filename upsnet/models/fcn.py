@@ -68,7 +68,8 @@ class FCNSubNet(nn.Module):
                     m.bias.data.fill_(0)
 
     def forward(self, x):
-        for i in range(self.num_layers):        
+        for i in range(self.num_layers):
+            #print('fcn1')
             x = self.conv[i](x)
         return x
 
@@ -86,17 +87,19 @@ class FCNHead(nn.Module):
         self.initialize()
 
     def forward(self, fpn_p2, fpn_p3, fpn_p4, fpn_p5, roi=None):
+        #print('f1')
         fpn_p2 = self.fcn_subnet(fpn_p2)
         fpn_p3 = self.fcn_subnet(fpn_p3)
         fpn_p4 = self.fcn_subnet(fpn_p4)
         fpn_p5 = self.fcn_subnet(fpn_p5)
-
+        #print('f2')
         fpn_p3 = F.interpolate(fpn_p3, None, 2, mode='bilinear', align_corners=False)
         fpn_p4 = F.interpolate(fpn_p4, None, 4, mode='bilinear', align_corners=False)
         fpn_p5 = F.interpolate(fpn_p5, None, 8, mode='bilinear', align_corners=False)
         feat = torch.cat([fpn_p2, fpn_p3, fpn_p4, fpn_p5], dim=1)
         score = self.score(feat)
         ret = {'fcn_score': score, 'fcn_feat': feat}
+        #print('f3')
         if self.upsample_rate != 1:
             output = F.interpolate(score, None, self.upsample_rate, mode='bilinear', align_corners=False)
             ret.update({'fcn_output': output})
@@ -104,7 +107,7 @@ class FCNHead(nn.Module):
             roi_feat = self.roipool(feat, roi)
             roi_score = self.score(roi_feat)
             ret.update({'fcn_roi_score': roi_score})
-
+        #print('f4')
         return ret
 
 

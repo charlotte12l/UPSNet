@@ -35,7 +35,8 @@ from upsnet.config.config import config
 from upsnet.config.parse_args import parse_args
 from lib.utils.logging import create_logger
 from lib.utils.timer import Timer
-
+import warnings
+warnings.filterwarnings("ignore")
 
 args = parse_args()
 logger, final_output_path = create_logger(config.output_path, args.cfg, config.dataset.test_image_set)
@@ -159,6 +160,7 @@ def upsnet_test():
 
     # create models
     gpus = [int(_) for _ in config.gpus.split(',')]
+    print('gpus:',gpus)
     test_model = eval(config.symbol)().cuda(device=gpus[0])
 
     # create data loader
@@ -184,6 +186,7 @@ def upsnet_test():
             test_dataset.evaluate_panoptic(test_dataset.get_unified_pan_result(results['all_ssegs'], results['all_panos'], results['all_pano_cls_inds'], stuff_area_limit=config.test.panoptic_stuff_area_limit), os.path.join(final_output_path, 'results', 'pans_unified'))
         sys.exit()
 
+    #print('1')
     # preparing
     curr_iter = config.test.test_iteration
     if args.weight_path == '':
@@ -200,7 +203,7 @@ def upsnet_test():
 
     # start training
     test_model.eval()
-
+    #print('2')
     i_iter = 0
     idx = 0
     test_iter = test_loader.__iter__()
@@ -244,7 +247,9 @@ def upsnet_test():
         if i_iter > 10:
             net_timer.tic()
         with torch.no_grad():
+            #print('3')
             output = test_model(*batch)
+            #print('4')
             torch.cuda.synchronize()
             if i_iter > 10:
                 net_time = net_timer.toc()

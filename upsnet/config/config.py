@@ -22,7 +22,7 @@ config.debug_mode = False
 # config.output_path = ''
 # config.model_prefix = ''
 # config.symbol = ''
-# config.gpus = ''
+#config.gpus = '0,1'
 
 # network related params
 config.network = edict()
