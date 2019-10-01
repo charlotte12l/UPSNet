@@ -106,7 +106,7 @@ Because the previous codes use many relative path and would cause error when you
     
 - Dataset:
 
-    -Error: Division Zero
+    - Error: Division Zero
     
     - Solution:
     Please make sure the data are in data/cityscapes/images/,data/cityscapes/annotations/, data/cityscapes/labels/, data/cityscapes/panoptic/, and the path to the dataset is right 
