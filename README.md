@@ -1,10 +1,81 @@
+# UPSNet on RC
+
+## Introduction 
+
+UPSNet is initially described in a [CVPR 2019 oral](https://arxiv.org/abs/1901.03784) paper. Here I introduce the settings on RC Harvard Cluster and potential problems you may meet.
+
+## Requirements: Software
+
+We recommend using Anaconda3 as it already includes many common packages.
+
+
+## Requirements: Hardware
+
+We recommend using 4~16 GPUs with at least 11 GB memory to train our model.
+
+## Installation
+
+Clone this repo to `$UPSNet_ROOT`
+
+Run `init.sh` to build essential C++/CUDA modules and download pretrained model.
+
+For Cityscapes:
+
+Assuming you already downloaded Cityscapes dataset at `$CITYSCAPES_ROOT` and TrainIds label images are generated, please create a soft link by `ln -s $CITYSCAPES_ROOT data/cityscapes` under `UPSNet_ROOT`, and run `init_cityscapes.sh` to prepare Cityscapes dataset for UPSNet.
+
+For COCO:
+
+Assuming you already downloaded COCO dataset at `$COCO_ROOT` and have `annotations` and `images` folders under it, please create a soft link by `ln -s $COCO_ROOT data/coco` under `UPSNet_ROOT`, and run `init_coco.sh` to prepare COCO dataset for UPSNet.
+
+Training:
+
+`python upsnet/upsnet_end2end_train.py --cfg upsnet/experiments/$EXP.yaml`
+
+Test:
+
+`python upsnet/upsnet_end2end_test.py --cfg upsnet/experiments/$EXP.yaml`
+
+We provide serveral config files (16/4 GPUs for Cityscapes/COCO dataset) under upsnet/experiments folder.
+
+## Model Weights
+
+The model weights that can reproduce numbers in our paper are available now. Please follow these steps to use them:
+
+Run `download_weights.sh` to get trained model weights for Cityscapes and COCO.
+
+For Cityscapes:
+
+```shell
+python upsnet/upsnet_end2end_test.py --cfg upsnet/experiments/upsnet_resnet50_cityscapes_16gpu.yaml --weight_path ./model/upsnet_resnet_50_cityscapes_12000.pth
+```
+
+```shell
+python upsnet/upsnet_end2end_test.py --cfg upsnet/experiments/upsnet_resnet101_cityscapes_w_coco_16gpu.yaml --weight_path ./model/upsnet_resnet_101_cityscapes_w_coco_3000.pth
+```
+
+For COCO:
+
+```shell
+python upsnet/upsnet_end2end_test.py --cfg upsnet/experiments/upsnet_resnet50_coco_16gpu.yaml --weight_path model/upsnet_resnet_50_coco_90000.pth
+```
+
+```shell
+python upsnet/upsnet_end2end_test.py --cfg upsnet/experiments/upsnet_resnet101_dcn_coco_3x_16gpu.yaml --weight_path model/upsnet_resnet_101_dcn_coco_270000.pth
+```
+
+## My Modification
+
+Because the previous codes use many relative path and would cause error when you sbatch a job on RC. I modify many paths to let it run on RC, which you can see in my commit. You can change them to your path.
+
+## Potential Problems You May Meet
+
+
+
+------------------------------------------------------------------------------------------------------------------
 # UPSNet: A Unified Panoptic Segmentation Network
 
 # Introduction
 UPSNet is initially described in a [CVPR 2019 oral](https://arxiv.org/abs/1901.03784) paper.
-
-
-
 
 # Disclaimer
 
@@ -42,64 +113,6 @@ Cityscapes
 | UPSNet-50      | 59.3 | 79.7 | 73.0 | 54.6            | 62.7            |
 | UPSNet-101-COCO (ms test) | 61.8 | 81.3 | 74.8 | 57.6 | 64.8 |
 
-# Requirements: Software
-
-We recommend using Anaconda3 as it already includes many common packages.
-
-
-# Requirements: Hardware
-
-We recommend using 4~16 GPUs with at least 11 GB memory to train our model.
-
-# Installation
-
-Clone this repo to `$UPSNet_ROOT`
-
-Run `init.sh` to build essential C++/CUDA modules and download pretrained model.
-
-For Cityscapes:
-
-Assuming you already downloaded Cityscapes dataset at `$CITYSCAPES_ROOT` and TrainIds label images are generated, please create a soft link by `ln -s $CITYSCAPES_ROOT data/cityscapes` under `UPSNet_ROOT`, and run `init_cityscapes.sh` to prepare Cityscapes dataset for UPSNet.
-
-For COCO:
-
-Assuming you already downloaded COCO dataset at `$COCO_ROOT` and have `annotations` and `images` folders under it, please create a soft link by `ln -s $COCO_ROOT data/coco` under `UPSNet_ROOT`, and run `init_coco.sh` to prepare COCO dataset for UPSNet.
-
-Training:
-
-`python upsnet/upsnet_end2end_train.py --cfg upsnet/experiments/$EXP.yaml`
-
-Test:
-
-`python upsnet/upsnet_end2end_test.py --cfg upsnet/experiments/$EXP.yaml`
-
-We provide serveral config files (16/4 GPUs for Cityscapes/COCO dataset) under upsnet/experiments folder.
-
-# Model Weights
-
-The model weights that can reproduce numbers in our paper are available now. Please follow these steps to use them:
-
-Run `download_weights.sh` to get trained model weights for Cityscapes and COCO.
-
-For Cityscapes:
-
-```shell
-python upsnet/upsnet_end2end_test.py --cfg upsnet/experiments/upsnet_resnet50_cityscapes_16gpu.yaml --weight_path ./model/upsnet_resnet_50_cityscapes_12000.pth
-```
-
-```shell
-python upsnet/upsnet_end2end_test.py --cfg upsnet/experiments/upsnet_resnet101_cityscapes_w_coco_16gpu.yaml --weight_path ./model/upsnet_resnet_101_cityscapes_w_coco_3000.pth
-```
-
-For COCO:
-
-```shell
-python upsnet/upsnet_end2end_test.py --cfg upsnet/experiments/upsnet_resnet50_coco_16gpu.yaml --weight_path model/upsnet_resnet_50_coco_90000.pth
-```
-
-```shell
-python upsnet/upsnet_end2end_test.py --cfg upsnet/experiments/upsnet_resnet101_dcn_coco_3x_16gpu.yaml --weight_path model/upsnet_resnet_101_dcn_coco_270000.pth
-```
 
 
 
