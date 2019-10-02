@@ -4,10 +4,15 @@
 
 UPSNet is initially described in a [CVPR 2019 oral](https://arxiv.org/abs/1901.03784) paper. Here I introduce the settings on RC Harvard Cluster and potential problems you may meet.
 
-The performance for my pretrained model(use upsnet_resnet50_cityscapes_4gpu.yaml) on RC is shown below:
+The performance for my pretrained model(use upsnet_resnet50_cityscapes_4gpu.yaml) test log on RC is shown in [my_model_test.log](https://github.com/charlotte12l/UPSNet/blob/master/my_model_test.log):
 
+|                | PQ   | SQ   | RQ   | PQ<sup>Th</sup> | PQ<sup>St</sup> | mIOU | AP |
+|----------------|------|------|------|-----------------|-----------------|------|----|
+| UPSNet-50 (My) | 58.6 | 79.8 | 72.1 | 53.8            | 62.1            | 75.5 | 34.4|
+| UPSNet-50(Author's test on RC) | 59.4 | 79.7 | 73.1 | 54.6 | 62.8 | 75.3 | 33.3|
+| UPSNet-50(Author's report ) | 59.3 | 79.7 | 73.0 | 54.6    | 62.7 |  75.2  |33.3       |
 
-The performance of the author's pretrained model on RC is shown below:
+The performance of the author's pretrained model test results on RC is shown in [author_model_test.log](https://github.com/charlotte12l/UPSNet/blob/master/author_model_test.log):
 
 
 
