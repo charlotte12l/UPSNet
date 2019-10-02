@@ -4,6 +4,13 @@
 
 UPSNet is initially described in a [CVPR 2019 oral](https://arxiv.org/abs/1901.03784) paper. Here I introduce the settings on RC Harvard Cluster and potential problems you may meet.
 
+The performance for my pretrained model(use upsnet_resnet50_cityscapes_4gpu.yaml) on RC is shown below:
+
+
+The performance of the author's pretrained model on RC is shown below:
+
+
+
 ## Requirements: Software
 
 We recommend using Anaconda3 as it already includes many common packages.
