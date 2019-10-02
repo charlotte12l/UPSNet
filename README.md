@@ -4,7 +4,8 @@
 
 UPSNet is initially described in a [CVPR 2019 oral](https://arxiv.org/abs/1901.03784) paper. Here I introduce the settings on RC Harvard Cluster and potential problems you may meet.
 
-The performance for my pretrained model(use upsnet_resnet50_cityscapes_4gpu.yaml) test log on RC is shown in [my_model_test.log](https://github.com/charlotte12l/UPSNet/blob/master/my_model_test.log):
+The performance for my pretrained model(use upsnet_resnet50_cityscapes_4gpu.yaml) test log on RC is shown in [my_model_test_cityscapes.log](https://github.com/charlotte12l/UPSNet/blob/master/outputs/my_model_test_cityscapes.log).
+The performance of the author's pretrained model test results on RC is shown in [author_model_test_cityscapes.log](https://github.com/charlotte12l/UPSNet/blob/master/outputs/author_model_test_cityscapes.log).
 
 |                | PQ   | SQ   | RQ   | PQ<sup>Th</sup> | PQ<sup>St</sup> | mIOU | AP |
 |----------------|------|------|------|-----------------|-----------------|------|----|
@@ -12,7 +13,9 @@ The performance for my pretrained model(use upsnet_resnet50_cityscapes_4gpu.yaml
 | UPSNet-50(Author's test on RC) | 59.4 | 79.7 | 73.1 | 54.6 | 62.8 | 75.3 | 33.3|
 | UPSNet-50(Author's report ) | 59.3 | 79.7 | 73.0 | 54.6    | 62.7 |  75.2  |33.3       |
 
-The performance of the author's pretrained model test results on RC is shown in [author_model_test.log](https://github.com/charlotte12l/UPSNet/blob/master/author_model_test.log):
+For COCO, use the author's model can also reproduce its results. They are shown in [author_model_test_coco.log](https://github.com/charlotte12l/UPSNet/blob/master/outputs/author_model_test_coco.log)
+
+
 
 
 
