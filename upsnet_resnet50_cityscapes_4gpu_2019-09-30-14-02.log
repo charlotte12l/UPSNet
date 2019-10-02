@@ -1,0 +1,457 @@
+2019-09-30 14:02:28,916 | upsnet_end2end_test.py | line 159: test config:{'dataset': {'dataset': 'Cityscapes',
+             'dataset_path': '/n/pfister_lab2/Lab/xingyu/InstanceSeg/UPSNet-master/data/cityscapes/',
+             'image_set': 'train',
+             'num_classes': 9,
+             'num_seg_classes': 19,
+             'root_path': '/n/pfister_lab2/Lab/xingyu/InstanceSeg/UPSNet-master/data/',
+             'test_image_set': 'val'},
+ 'debug_mode': False,
+ 'gpus': '0,1',
+ 'model_prefix': 'upsnet_resnet_50_cityscapes_',
+ 'network': {'anchor_ratios': [0.5, 1, 2],
+             'anchor_scales': [8],
+             'backbone_fix_bn': True,
+             'backbone_freeze_at': 2,
+             'backbone_with_dconv': 100,
+             'backbone_with_dilation': False,
+             'backbone_with_dpyramid': False,
+             'bbox_reg_weights': [10.0, 10.0, 5.0, 5.0],
+             'binary_thresh': 0.5,
+             'cls_agnostic_bbox_reg': False,
+             'fcn_head': 'FCNHead',
+             'fcn_num_layers': 2,
+             'fcn_with_norm': 'none',
+             'fpn_feature_dim': 256,
+             'fpn_upsample_method': 'nearest',
+             'fpn_with_gap': False,
+             'fpn_with_norm': 'none',
+             'has_fcn_head': True,
+             'has_fpn': True,
+             'has_mask_head': True,
+             'has_mask_rcnn': True,
+             'has_panoptic_head': True,
+             'has_rcnn': True,
+             'has_rpn': True,
+             'mask_size': 28,
+             'num_anchors': 3,
+             'pixel_means': array([102.9801, 115.9465, 122.7717]),
+             'pretrained': '/n/pfister_lab2/Lab/xingyu/InstanceSeg/UPSNet-master/model/pretrained_model/resnet-50-caffe.pth',
+             'rcnn_feat_stride': 32,
+             'rcnn_with_norm': 'none',
+             'rpn_feat_stride': [4, 8, 16, 32, 64],
+             'rpn_with_norm': 'none',
+             'use_caffe_model': True,
+             'use_syncbn': False},
+ 'output_path': '/n/pfister_lab2/Lab/xingyu/InstanceSeg/Outputs/upsnet/cityscapes',
+ 'symbol': 'resnet_50_upsnet',
+ 'test': {'batch_size': 1,
+          'max_det': 100,
+          'max_size': 2048,
+          'nms_thresh': 0.5,
+          'panoptic_score_thresh': 0.6,
+          'panoptic_stuff_area_limit': 2048,
+          'rpn_min_size': 0,
+          'rpn_nms_thresh': 0.7,
+          'rpn_post_nms_top_n': 1000,
+          'rpn_pre_nms_top_n': 1000,
+          'scales': [1024],
+          'score_thresh': 0.05,
+          'test_iteration': 48000,
+          'vis_mask': False},
+ 'train': {'batch_rois': 512,
+           'batch_size': 1,
+           'bbox_loss_weight': 1.0,
+           'bbox_means': [0.0, 0.0, 0.0, 0.0],
+           'bbox_normalization_precomputed': True,
+           'bbox_regression_thresh': 0.5,
+           'bbox_stds': [0.1, 0.1, 0.2, 0.2],
+           'bbox_thresh': 0.5,
+           'bbox_weights': array([1., 1., 1., 1.]),
+           'begin_iteration': 0,
+           'bg_thresh_hi': 0.5,
+           'bg_thresh_lo': 0.0,
+           'crowd_filter_thresh': 0.7,
+           'decay_iteration': [36000],
+           'display_iter': 20,
+           'eval_data': True,
+           'fcn_focal_loss_gamma': 1.0,
+           'fcn_loss_weight': 1,
+           'fcn_use_focal_loss': False,
+           'fcn_with_negative_loss': False,
+           'fcn_with_roi_loss': False,
+           'fg_fraction': 0.25,
+           'fg_thresh': 0.5,
+           'flip': True,
+           'gt_min_area': -1,
+           'lr': 0.005,
+           'lr_schedule': 'step',
+           'max_iteration': 48000,
+           'max_size': 2048,
+           'momentum': 0.9,
+           'panoptic_box_keep_fraction': 0.7,
+           'panoptic_focal_loss_gamma': 1.0,
+           'panoptic_loss_weight': 0.5,
+           'panoptic_use_focal_loss': False,
+           'panoptic_with_roi_loss': False,
+           'resume': False,
+           'rpn_batch_size': 256,
+           'rpn_bbox_weights': [1.0, 1.0, 1.0, 1.0],
+           'rpn_clobber_positive': False,
+           'rpn_fg_fraction': 0.5,
+           'rpn_individual_proposals': True,
+           'rpn_min_size': 0,
+           'rpn_negative_overlap': 0.3,
+           'rpn_nms_thresh': 0.7,
+           'rpn_positive_overlap': 0.7,
+           'rpn_positive_weight': -1.0,
+           'rpn_post_nms_top_n': 2000,
+           'rpn_pre_nms_top_n': 2000,
+           'rpn_straddle_thresh': 0,
+           'scales': [800, 832, 864, 896, 928, 960, 992, 1024],
+           'shuffle': True,
+           'snapshot_step': 1000,
+           'use_horovod': False,
+           'warmup_iteration': 1500,
+           'wd': 0.0001}}
+
+2019-09-30 14:02:34,964 | json_dataset.py | line 63 : Creating: cityscapes_val
+2019-09-30 14:02:41,512 | upsnet_end2end_test.py | line 279: Batch 2/500, data_time:4.471, net_time:0.000, post_time:0.278
+2019-09-30 14:02:42,789 | upsnet_end2end_test.py | line 279: Batch 4/500, data_time:2.389, net_time:0.000, post_time:0.398
+2019-09-30 14:02:44,091 | upsnet_end2end_test.py | line 279: Batch 6/500, data_time:1.695, net_time:0.000, post_time:0.444
+2019-09-30 14:02:45,296 | upsnet_end2end_test.py | line 279: Batch 8/500, data_time:1.353, net_time:0.000, post_time:0.444
+2019-09-30 14:02:46,334 | upsnet_end2end_test.py | line 279: Batch 10/500, data_time:1.144, net_time:0.000, post_time:0.408
+2019-09-30 14:02:47,483 | upsnet_end2end_test.py | line 279: Batch 12/500, data_time:0.999, net_time:0.521, post_time:0.395
+2019-09-30 14:02:48,467 | upsnet_end2end_test.py | line 279: Batch 14/500, data_time:0.901, net_time:0.459, post_time:0.376
+2019-09-30 14:02:49,658 | upsnet_end2end_test.py | line 279: Batch 16/500, data_time:0.827, net_time:0.464, post_time:0.380
+2019-09-30 14:02:50,974 | upsnet_end2end_test.py | line 279: Batch 18/500, data_time:0.770, net_time:0.464, post_time:0.395
+2019-09-30 14:02:51,976 | upsnet_end2end_test.py | line 279: Batch 20/500, data_time:0.724, net_time:0.450, post_time:0.383
+2019-09-30 14:02:53,226 | upsnet_end2end_test.py | line 279: Batch 22/500, data_time:0.684, net_time:0.446, post_time:0.396
+2019-09-30 14:02:54,189 | upsnet_end2end_test.py | line 279: Batch 24/500, data_time:0.654, net_time:0.438, post_time:0.382
+2019-09-30 14:02:55,368 | upsnet_end2end_test.py | line 279: Batch 26/500, data_time:0.631, net_time:0.442, post_time:0.379
+2019-09-30 14:02:56,533 | upsnet_end2end_test.py | line 279: Batch 28/500, data_time:0.608, net_time:0.438, post_time:0.383
+2019-09-30 14:02:57,977 | upsnet_end2end_test.py | line 279: Batch 30/500, data_time:0.588, net_time:0.442, post_time:0.400
+2019-09-30 14:02:59,097 | upsnet_end2end_test.py | line 279: Batch 32/500, data_time:0.571, net_time:0.443, post_time:0.396
+2019-09-30 14:03:00,281 | upsnet_end2end_test.py | line 279: Batch 34/500, data_time:0.559, net_time:0.444, post_time:0.393
+2019-09-30 14:03:01,292 | upsnet_end2end_test.py | line 279: Batch 36/500, data_time:0.546, net_time:0.440, post_time:0.388
+2019-09-30 14:03:02,468 | upsnet_end2end_test.py | line 279: Batch 38/500, data_time:0.533, net_time:0.442, post_time:0.388
+2019-09-30 14:03:03,772 | upsnet_end2end_test.py | line 279: Batch 40/500, data_time:0.522, net_time:0.444, post_time:0.393
+2019-09-30 14:03:05,066 | upsnet_end2end_test.py | line 279: Batch 42/500, data_time:0.512, net_time:0.445, post_time:0.399
+2019-09-30 14:03:06,415 | upsnet_end2end_test.py | line 279: Batch 44/500, data_time:0.504, net_time:0.446, post_time:0.405
+2019-09-30 14:03:07,807 | upsnet_end2end_test.py | line 279: Batch 46/500, data_time:0.496, net_time:0.445, post_time:0.416
+2019-09-30 14:03:09,044 | upsnet_end2end_test.py | line 279: Batch 48/500, data_time:0.488, net_time:0.446, post_time:0.417
+2019-09-30 14:03:10,331 | upsnet_end2end_test.py | line 279: Batch 50/500, data_time:0.481, net_time:0.448, post_time:0.420
+2019-09-30 14:03:11,432 | upsnet_end2end_test.py | line 279: Batch 52/500, data_time:0.475, net_time:0.448, post_time:0.416
+2019-09-30 14:03:13,274 | upsnet_end2end_test.py | line 279: Batch 54/500, data_time:0.469, net_time:0.450, post_time:0.438
+2019-09-30 14:03:14,591 | upsnet_end2end_test.py | line 279: Batch 56/500, data_time:0.463, net_time:0.450, post_time:0.442
+2019-09-30 14:03:15,812 | upsnet_end2end_test.py | line 279: Batch 58/500, data_time:0.458, net_time:0.449, post_time:0.444
+2019-09-30 14:03:17,359 | upsnet_end2end_test.py | line 279: Batch 60/500, data_time:0.453, net_time:0.448, post_time:0.455
+2019-09-30 14:03:18,932 | upsnet_end2end_test.py | line 279: Batch 62/500, data_time:0.449, net_time:0.449, post_time:0.465
+2019-09-30 14:03:20,223 | upsnet_end2end_test.py | line 279: Batch 64/500, data_time:0.445, net_time:0.448, post_time:0.467
+2019-09-30 14:03:21,278 | upsnet_end2end_test.py | line 279: Batch 66/500, data_time:0.441, net_time:0.448, post_time:0.461
+2019-09-30 14:03:22,669 | upsnet_end2end_test.py | line 279: Batch 68/500, data_time:0.437, net_time:0.448, post_time:0.465
+2019-09-30 14:03:23,953 | upsnet_end2end_test.py | line 279: Batch 70/500, data_time:0.433, net_time:0.448, post_time:0.467
+2019-09-30 14:03:25,221 | upsnet_end2end_test.py | line 279: Batch 72/500, data_time:0.430, net_time:0.448, post_time:0.467
+2019-09-30 14:03:26,576 | upsnet_end2end_test.py | line 279: Batch 74/500, data_time:0.426, net_time:0.446, post_time:0.473
+2019-09-30 14:03:28,212 | upsnet_end2end_test.py | line 279: Batch 76/500, data_time:0.423, net_time:0.447, post_time:0.483
+2019-09-30 14:03:29,783 | upsnet_end2end_test.py | line 279: Batch 78/500, data_time:0.420, net_time:0.449, post_time:0.490
+2019-09-30 14:03:31,281 | upsnet_end2end_test.py | line 279: Batch 80/500, data_time:0.417, net_time:0.447, post_time:0.497
+2019-09-30 14:03:32,830 | upsnet_end2end_test.py | line 279: Batch 82/500, data_time:0.414, net_time:0.447, post_time:0.504
+2019-09-30 14:03:34,267 | upsnet_end2end_test.py | line 279: Batch 84/500, data_time:0.412, net_time:0.448, post_time:0.507
+2019-09-30 14:03:35,604 | upsnet_end2end_test.py | line 279: Batch 86/500, data_time:0.409, net_time:0.446, post_time:0.510
+2019-09-30 14:03:37,327 | upsnet_end2end_test.py | line 279: Batch 88/500, data_time:0.408, net_time:0.445, post_time:0.520
+2019-09-30 14:03:38,902 | upsnet_end2end_test.py | line 279: Batch 90/500, data_time:0.406, net_time:0.446, post_time:0.525
+2019-09-30 14:03:40,146 | upsnet_end2end_test.py | line 279: Batch 92/500, data_time:0.404, net_time:0.446, post_time:0.524
+2019-09-30 14:03:41,435 | upsnet_end2end_test.py | line 279: Batch 94/500, data_time:0.402, net_time:0.446, post_time:0.524
+2019-09-30 14:03:42,685 | upsnet_end2end_test.py | line 279: Batch 96/500, data_time:0.400, net_time:0.446, post_time:0.523
+2019-09-30 14:03:44,061 | upsnet_end2end_test.py | line 279: Batch 98/500, data_time:0.398, net_time:0.447, post_time:0.524
+2019-09-30 14:03:45,572 | upsnet_end2end_test.py | line 279: Batch 100/500, data_time:0.396, net_time:0.448, post_time:0.528
+2019-09-30 14:03:47,106 | upsnet_end2end_test.py | line 279: Batch 102/500, data_time:0.394, net_time:0.451, post_time:0.530
+2019-09-30 14:03:48,105 | upsnet_end2end_test.py | line 279: Batch 104/500, data_time:0.392, net_time:0.451, post_time:0.524
+2019-09-30 14:03:49,151 | upsnet_end2end_test.py | line 279: Batch 106/500, data_time:0.391, net_time:0.449, post_time:0.521
+2019-09-30 14:03:50,306 | upsnet_end2end_test.py | line 279: Batch 108/500, data_time:0.389, net_time:0.450, post_time:0.518
+2019-09-30 14:03:51,313 | upsnet_end2end_test.py | line 279: Batch 110/500, data_time:0.388, net_time:0.449, post_time:0.513
+2019-09-30 14:03:52,357 | upsnet_end2end_test.py | line 279: Batch 112/500, data_time:0.387, net_time:0.448, post_time:0.510
+2019-09-30 14:03:53,495 | upsnet_end2end_test.py | line 279: Batch 114/500, data_time:0.385, net_time:0.447, post_time:0.508
+2019-09-30 14:03:54,888 | upsnet_end2end_test.py | line 279: Batch 116/500, data_time:0.384, net_time:0.448, post_time:0.509
+2019-09-30 14:03:56,069 | upsnet_end2end_test.py | line 279: Batch 118/500, data_time:0.382, net_time:0.447, post_time:0.508
+2019-09-30 14:03:57,112 | upsnet_end2end_test.py | line 279: Batch 120/500, data_time:0.381, net_time:0.447, post_time:0.504
+2019-09-30 14:03:58,338 | upsnet_end2end_test.py | line 279: Batch 122/500, data_time:0.379, net_time:0.448, post_time:0.504
+2019-09-30 14:03:59,526 | upsnet_end2end_test.py | line 279: Batch 124/500, data_time:0.378, net_time:0.448, post_time:0.502
+2019-09-30 14:04:00,685 | upsnet_end2end_test.py | line 279: Batch 126/500, data_time:0.377, net_time:0.448, post_time:0.500
+2019-09-30 14:04:01,920 | upsnet_end2end_test.py | line 279: Batch 128/500, data_time:0.375, net_time:0.449, post_time:0.499
+2019-09-30 14:04:03,088 | upsnet_end2end_test.py | line 279: Batch 130/500, data_time:0.374, net_time:0.449, post_time:0.498
+2019-09-30 14:04:04,513 | upsnet_end2end_test.py | line 279: Batch 132/500, data_time:0.373, net_time:0.450, post_time:0.500
+2019-09-30 14:04:05,773 | upsnet_end2end_test.py | line 279: Batch 134/500, data_time:0.372, net_time:0.449, post_time:0.500
+2019-09-30 14:04:07,181 | upsnet_end2end_test.py | line 279: Batch 136/500, data_time:0.371, net_time:0.450, post_time:0.502
+2019-09-30 14:04:08,365 | upsnet_end2end_test.py | line 279: Batch 138/500, data_time:0.369, net_time:0.450, post_time:0.501
+2019-09-30 14:04:09,661 | upsnet_end2end_test.py | line 279: Batch 140/500, data_time:0.368, net_time:0.450, post_time:0.501
+2019-09-30 14:04:11,333 | upsnet_end2end_test.py | line 279: Batch 142/500, data_time:0.367, net_time:0.451, post_time:0.506
+2019-09-30 14:04:12,766 | upsnet_end2end_test.py | line 279: Batch 144/500, data_time:0.366, net_time:0.452, post_time:0.507
+2019-09-30 14:04:13,901 | upsnet_end2end_test.py | line 279: Batch 146/500, data_time:0.365, net_time:0.451, post_time:0.506
+2019-09-30 14:04:15,099 | upsnet_end2end_test.py | line 279: Batch 148/500, data_time:0.364, net_time:0.451, post_time:0.505
+2019-09-30 14:04:16,051 | upsnet_end2end_test.py | line 279: Batch 150/500, data_time:0.364, net_time:0.451, post_time:0.501
+2019-09-30 14:04:16,934 | upsnet_end2end_test.py | line 279: Batch 152/500, data_time:0.363, net_time:0.450, post_time:0.497
+2019-09-30 14:04:18,102 | upsnet_end2end_test.py | line 279: Batch 154/500, data_time:0.363, net_time:0.450, post_time:0.495
+2019-09-30 14:04:19,140 | upsnet_end2end_test.py | line 279: Batch 156/500, data_time:0.362, net_time:0.449, post_time:0.493
+2019-09-30 14:04:20,108 | upsnet_end2end_test.py | line 279: Batch 158/500, data_time:0.361, net_time:0.449, post_time:0.490
+2019-09-30 14:04:21,238 | upsnet_end2end_test.py | line 279: Batch 160/500, data_time:0.361, net_time:0.449, post_time:0.488
+2019-09-30 14:04:22,509 | upsnet_end2end_test.py | line 279: Batch 162/500, data_time:0.360, net_time:0.449, post_time:0.488
+2019-09-30 14:04:23,639 | upsnet_end2end_test.py | line 279: Batch 164/500, data_time:0.360, net_time:0.448, post_time:0.487
+2019-09-30 14:04:24,940 | upsnet_end2end_test.py | line 279: Batch 166/500, data_time:0.359, net_time:0.448, post_time:0.488
+2019-09-30 14:04:26,098 | upsnet_end2end_test.py | line 279: Batch 168/500, data_time:0.358, net_time:0.449, post_time:0.486
+2019-09-30 14:04:27,114 | upsnet_end2end_test.py | line 279: Batch 170/500, data_time:0.358, net_time:0.449, post_time:0.483
+2019-09-30 14:04:28,370 | upsnet_end2end_test.py | line 279: Batch 172/500, data_time:0.358, net_time:0.449, post_time:0.483
+2019-09-30 14:04:29,682 | upsnet_end2end_test.py | line 279: Batch 174/500, data_time:0.357, net_time:0.449, post_time:0.483
+2019-09-30 14:04:31,093 | upsnet_end2end_test.py | line 279: Batch 176/500, data_time:0.357, net_time:0.449, post_time:0.485
+2019-09-30 14:04:32,361 | upsnet_end2end_test.py | line 279: Batch 178/500, data_time:0.356, net_time:0.448, post_time:0.486
+2019-09-30 14:04:33,486 | upsnet_end2end_test.py | line 279: Batch 180/500, data_time:0.356, net_time:0.448, post_time:0.484
+2019-09-30 14:04:34,909 | upsnet_end2end_test.py | line 279: Batch 182/500, data_time:0.356, net_time:0.448, post_time:0.486
+2019-09-30 14:04:36,934 | upsnet_end2end_test.py | line 279: Batch 184/500, data_time:0.356, net_time:0.450, post_time:0.492
+2019-09-30 14:04:38,238 | upsnet_end2end_test.py | line 279: Batch 186/500, data_time:0.356, net_time:0.450, post_time:0.491
+2019-09-30 14:04:39,989 | upsnet_end2end_test.py | line 279: Batch 188/500, data_time:0.357, net_time:0.450, post_time:0.496
+2019-09-30 14:04:41,466 | upsnet_end2end_test.py | line 279: Batch 190/500, data_time:0.356, net_time:0.449, post_time:0.499
+2019-09-30 14:04:42,924 | upsnet_end2end_test.py | line 279: Batch 192/500, data_time:0.356, net_time:0.449, post_time:0.501
+2019-09-30 14:04:44,605 | upsnet_end2end_test.py | line 279: Batch 194/500, data_time:0.356, net_time:0.449, post_time:0.505
+2019-09-30 14:04:46,295 | upsnet_end2end_test.py | line 279: Batch 196/500, data_time:0.356, net_time:0.449, post_time:0.508
+2019-09-30 14:04:48,137 | upsnet_end2end_test.py | line 279: Batch 198/500, data_time:0.356, net_time:0.449, post_time:0.513
+2019-09-30 14:04:49,974 | upsnet_end2end_test.py | line 279: Batch 200/500, data_time:0.356, net_time:0.450, post_time:0.518
+2019-09-30 14:04:51,487 | upsnet_end2end_test.py | line 279: Batch 202/500, data_time:0.355, net_time:0.450, post_time:0.520
+2019-09-30 14:04:52,976 | upsnet_end2end_test.py | line 279: Batch 204/500, data_time:0.356, net_time:0.450, post_time:0.521
+2019-09-30 14:04:54,513 | upsnet_end2end_test.py | line 279: Batch 206/500, data_time:0.355, net_time:0.450, post_time:0.524
+2019-09-30 14:04:55,837 | upsnet_end2end_test.py | line 279: Batch 208/500, data_time:0.354, net_time:0.449, post_time:0.525
+2019-09-30 14:04:57,404 | upsnet_end2end_test.py | line 279: Batch 210/500, data_time:0.354, net_time:0.448, post_time:0.528
+2019-09-30 14:04:58,643 | upsnet_end2end_test.py | line 279: Batch 212/500, data_time:0.353, net_time:0.448, post_time:0.527
+2019-09-30 14:04:59,713 | upsnet_end2end_test.py | line 279: Batch 214/500, data_time:0.353, net_time:0.449, post_time:0.525
+2019-09-30 14:05:00,923 | upsnet_end2end_test.py | line 279: Batch 216/500, data_time:0.353, net_time:0.449, post_time:0.524
+2019-09-30 14:05:02,099 | upsnet_end2end_test.py | line 279: Batch 218/500, data_time:0.352, net_time:0.448, post_time:0.524
+2019-09-30 14:05:03,653 | upsnet_end2end_test.py | line 279: Batch 220/500, data_time:0.352, net_time:0.448, post_time:0.525
+2019-09-30 14:05:04,851 | upsnet_end2end_test.py | line 279: Batch 222/500, data_time:0.351, net_time:0.448, post_time:0.525
+2019-09-30 14:05:06,110 | upsnet_end2end_test.py | line 279: Batch 224/500, data_time:0.351, net_time:0.448, post_time:0.525
+2019-09-30 14:05:07,319 | upsnet_end2end_test.py | line 279: Batch 226/500, data_time:0.351, net_time:0.448, post_time:0.524
+2019-09-30 14:05:08,459 | upsnet_end2end_test.py | line 279: Batch 228/500, data_time:0.350, net_time:0.448, post_time:0.523
+2019-09-30 14:05:09,372 | upsnet_end2end_test.py | line 279: Batch 230/500, data_time:0.350, net_time:0.447, post_time:0.520
+2019-09-30 14:05:10,566 | upsnet_end2end_test.py | line 279: Batch 232/500, data_time:0.349, net_time:0.447, post_time:0.519
+2019-09-30 14:05:11,973 | upsnet_end2end_test.py | line 279: Batch 234/500, data_time:0.349, net_time:0.447, post_time:0.520
+2019-09-30 14:05:13,353 | upsnet_end2end_test.py | line 279: Batch 236/500, data_time:0.349, net_time:0.448, post_time:0.521
+2019-09-30 14:05:14,846 | upsnet_end2end_test.py | line 279: Batch 238/500, data_time:0.349, net_time:0.448, post_time:0.522
+2019-09-30 14:05:16,235 | upsnet_end2end_test.py | line 279: Batch 240/500, data_time:0.349, net_time:0.448, post_time:0.521
+2019-09-30 14:05:17,727 | upsnet_end2end_test.py | line 279: Batch 242/500, data_time:0.349, net_time:0.448, post_time:0.523
+2019-09-30 14:05:18,888 | upsnet_end2end_test.py | line 279: Batch 244/500, data_time:0.349, net_time:0.449, post_time:0.522
+2019-09-30 14:05:19,922 | upsnet_end2end_test.py | line 279: Batch 246/500, data_time:0.348, net_time:0.448, post_time:0.520
+2019-09-30 14:05:20,970 | upsnet_end2end_test.py | line 279: Batch 248/500, data_time:0.348, net_time:0.448, post_time:0.518
+2019-09-30 14:05:22,404 | upsnet_end2end_test.py | line 279: Batch 250/500, data_time:0.347, net_time:0.449, post_time:0.519
+2019-09-30 14:05:23,788 | upsnet_end2end_test.py | line 279: Batch 252/500, data_time:0.347, net_time:0.449, post_time:0.519
+2019-09-30 14:05:25,121 | upsnet_end2end_test.py | line 279: Batch 254/500, data_time:0.347, net_time:0.449, post_time:0.519
+2019-09-30 14:05:26,488 | upsnet_end2end_test.py | line 279: Batch 256/500, data_time:0.346, net_time:0.449, post_time:0.520
+2019-09-30 14:05:27,595 | upsnet_end2end_test.py | line 279: Batch 258/500, data_time:0.346, net_time:0.449, post_time:0.519
+2019-09-30 14:05:28,637 | upsnet_end2end_test.py | line 279: Batch 260/500, data_time:0.346, net_time:0.449, post_time:0.517
+2019-09-30 14:05:29,704 | upsnet_end2end_test.py | line 279: Batch 262/500, data_time:0.345, net_time:0.448, post_time:0.516
+2019-09-30 14:05:30,963 | upsnet_end2end_test.py | line 279: Batch 264/500, data_time:0.345, net_time:0.448, post_time:0.516
+2019-09-30 14:05:32,188 | upsnet_end2end_test.py | line 279: Batch 266/500, data_time:0.344, net_time:0.448, post_time:0.516
+2019-09-30 14:05:33,286 | upsnet_end2end_test.py | line 279: Batch 268/500, data_time:0.344, net_time:0.448, post_time:0.514
+2019-09-30 14:05:34,223 | upsnet_end2end_test.py | line 279: Batch 270/500, data_time:0.343, net_time:0.448, post_time:0.512
+2019-09-30 14:05:35,147 | upsnet_end2end_test.py | line 279: Batch 272/500, data_time:0.343, net_time:0.448, post_time:0.510
+2019-09-30 14:05:36,393 | upsnet_end2end_test.py | line 279: Batch 274/500, data_time:0.343, net_time:0.448, post_time:0.510
+2019-09-30 14:05:37,312 | upsnet_end2end_test.py | line 279: Batch 276/500, data_time:0.342, net_time:0.448, post_time:0.507
+2019-09-30 14:05:38,268 | upsnet_end2end_test.py | line 279: Batch 278/500, data_time:0.342, net_time:0.448, post_time:0.505
+2019-09-30 14:05:39,149 | upsnet_end2end_test.py | line 279: Batch 280/500, data_time:0.342, net_time:0.448, post_time:0.502
+2019-09-30 14:05:40,202 | upsnet_end2end_test.py | line 279: Batch 282/500, data_time:0.341, net_time:0.448, post_time:0.501
+2019-09-30 14:05:41,137 | upsnet_end2end_test.py | line 279: Batch 284/500, data_time:0.341, net_time:0.448, post_time:0.499
+2019-09-30 14:05:42,043 | upsnet_end2end_test.py | line 279: Batch 286/500, data_time:0.341, net_time:0.448, post_time:0.496
+2019-09-30 14:05:42,764 | upsnet_end2end_test.py | line 279: Batch 288/500, data_time:0.341, net_time:0.447, post_time:0.493
+2019-09-30 14:05:43,526 | upsnet_end2end_test.py | line 279: Batch 290/500, data_time:0.340, net_time:0.447, post_time:0.489
+2019-09-30 14:05:44,590 | upsnet_end2end_test.py | line 279: Batch 292/500, data_time:0.340, net_time:0.447, post_time:0.488
+2019-09-30 14:05:45,458 | upsnet_end2end_test.py | line 279: Batch 294/500, data_time:0.340, net_time:0.447, post_time:0.486
+2019-09-30 14:05:46,297 | upsnet_end2end_test.py | line 279: Batch 296/500, data_time:0.339, net_time:0.447, post_time:0.483
+2019-09-30 14:05:47,179 | upsnet_end2end_test.py | line 279: Batch 298/500, data_time:0.339, net_time:0.447, post_time:0.481
+2019-09-30 14:05:48,012 | upsnet_end2end_test.py | line 279: Batch 300/500, data_time:0.339, net_time:0.447, post_time:0.478
+2019-09-30 14:05:49,117 | upsnet_end2end_test.py | line 279: Batch 302/500, data_time:0.338, net_time:0.448, post_time:0.476
+2019-09-30 14:05:49,930 | upsnet_end2end_test.py | line 279: Batch 304/500, data_time:0.338, net_time:0.447, post_time:0.474
+2019-09-30 14:05:50,915 | upsnet_end2end_test.py | line 279: Batch 306/500, data_time:0.338, net_time:0.448, post_time:0.472
+2019-09-30 14:05:51,754 | upsnet_end2end_test.py | line 279: Batch 308/500, data_time:0.337, net_time:0.447, post_time:0.470
+2019-09-30 14:05:52,629 | upsnet_end2end_test.py | line 279: Batch 310/500, data_time:0.337, net_time:0.447, post_time:0.468
+2019-09-30 14:05:53,439 | upsnet_end2end_test.py | line 279: Batch 312/500, data_time:0.337, net_time:0.447, post_time:0.465
+2019-09-30 14:05:54,249 | upsnet_end2end_test.py | line 279: Batch 314/500, data_time:0.337, net_time:0.447, post_time:0.462
+2019-09-30 14:05:55,005 | upsnet_end2end_test.py | line 279: Batch 316/500, data_time:0.337, net_time:0.446, post_time:0.460
+2019-09-30 14:05:55,750 | upsnet_end2end_test.py | line 279: Batch 318/500, data_time:0.336, net_time:0.446, post_time:0.457
+2019-09-30 14:05:56,607 | upsnet_end2end_test.py | line 279: Batch 320/500, data_time:0.336, net_time:0.446, post_time:0.455
+2019-09-30 14:05:57,332 | upsnet_end2end_test.py | line 279: Batch 322/500, data_time:0.336, net_time:0.446, post_time:0.452
+2019-09-30 14:05:58,360 | upsnet_end2end_test.py | line 279: Batch 324/500, data_time:0.336, net_time:0.445, post_time:0.451
+2019-09-30 14:05:59,191 | upsnet_end2end_test.py | line 279: Batch 326/500, data_time:0.335, net_time:0.445, post_time:0.450
+2019-09-30 14:06:00,598 | upsnet_end2end_test.py | line 279: Batch 328/500, data_time:0.335, net_time:0.446, post_time:0.450
+2019-09-30 14:06:01,767 | upsnet_end2end_test.py | line 279: Batch 330/500, data_time:0.335, net_time:0.446, post_time:0.450
+2019-09-30 14:06:02,861 | upsnet_end2end_test.py | line 279: Batch 332/500, data_time:0.334, net_time:0.446, post_time:0.449
+2019-09-30 14:06:03,968 | upsnet_end2end_test.py | line 279: Batch 334/500, data_time:0.334, net_time:0.446, post_time:0.448
+2019-09-30 14:06:05,125 | upsnet_end2end_test.py | line 279: Batch 336/500, data_time:0.334, net_time:0.446, post_time:0.448
+2019-09-30 14:06:06,643 | upsnet_end2end_test.py | line 279: Batch 338/500, data_time:0.333, net_time:0.446, post_time:0.450
+2019-09-30 14:06:08,143 | upsnet_end2end_test.py | line 279: Batch 340/500, data_time:0.333, net_time:0.447, post_time:0.451
+2019-09-30 14:06:09,491 | upsnet_end2end_test.py | line 279: Batch 342/500, data_time:0.333, net_time:0.447, post_time:0.452
+2019-09-30 14:06:10,725 | upsnet_end2end_test.py | line 279: Batch 344/500, data_time:0.333, net_time:0.447, post_time:0.452
+2019-09-30 14:06:11,852 | upsnet_end2end_test.py | line 279: Batch 346/500, data_time:0.333, net_time:0.447, post_time:0.451
+2019-09-30 14:06:13,111 | upsnet_end2end_test.py | line 279: Batch 348/500, data_time:0.333, net_time:0.447, post_time:0.451
+2019-09-30 14:06:14,340 | upsnet_end2end_test.py | line 279: Batch 350/500, data_time:0.333, net_time:0.447, post_time:0.451
+2019-09-30 14:06:15,583 | upsnet_end2end_test.py | line 279: Batch 352/500, data_time:0.333, net_time:0.447, post_time:0.451
+2019-09-30 14:06:16,908 | upsnet_end2end_test.py | line 279: Batch 354/500, data_time:0.332, net_time:0.448, post_time:0.452
+2019-09-30 14:06:18,007 | upsnet_end2end_test.py | line 279: Batch 356/500, data_time:0.332, net_time:0.447, post_time:0.451
+2019-09-30 14:06:19,211 | upsnet_end2end_test.py | line 279: Batch 358/500, data_time:0.332, net_time:0.447, post_time:0.451
+2019-09-30 14:06:20,638 | upsnet_end2end_test.py | line 279: Batch 360/500, data_time:0.332, net_time:0.447, post_time:0.452
+2019-09-30 14:06:21,617 | upsnet_end2end_test.py | line 279: Batch 362/500, data_time:0.332, net_time:0.447, post_time:0.451
+2019-09-30 14:06:22,783 | upsnet_end2end_test.py | line 279: Batch 364/500, data_time:0.332, net_time:0.448, post_time:0.450
+2019-09-30 14:06:24,119 | upsnet_end2end_test.py | line 279: Batch 366/500, data_time:0.332, net_time:0.447, post_time:0.451
+2019-09-30 14:06:25,536 | upsnet_end2end_test.py | line 279: Batch 368/500, data_time:0.332, net_time:0.447, post_time:0.452
+2019-09-30 14:06:26,834 | upsnet_end2end_test.py | line 279: Batch 370/500, data_time:0.332, net_time:0.448, post_time:0.452
+2019-09-30 14:06:28,165 | upsnet_end2end_test.py | line 279: Batch 372/500, data_time:0.331, net_time:0.448, post_time:0.453
+2019-09-30 14:06:29,549 | upsnet_end2end_test.py | line 279: Batch 374/500, data_time:0.331, net_time:0.448, post_time:0.454
+2019-09-30 14:06:31,206 | upsnet_end2end_test.py | line 279: Batch 376/500, data_time:0.331, net_time:0.448, post_time:0.456
+2019-09-30 14:06:32,585 | upsnet_end2end_test.py | line 279: Batch 378/500, data_time:0.331, net_time:0.448, post_time:0.457
+2019-09-30 14:06:34,138 | upsnet_end2end_test.py | line 279: Batch 380/500, data_time:0.331, net_time:0.448, post_time:0.458
+2019-09-30 14:06:35,358 | upsnet_end2end_test.py | line 279: Batch 382/500, data_time:0.331, net_time:0.448, post_time:0.458
+2019-09-30 14:06:36,943 | upsnet_end2end_test.py | line 279: Batch 384/500, data_time:0.331, net_time:0.449, post_time:0.460
+2019-09-30 14:06:38,171 | upsnet_end2end_test.py | line 279: Batch 386/500, data_time:0.331, net_time:0.449, post_time:0.460
+2019-09-30 14:06:39,667 | upsnet_end2end_test.py | line 279: Batch 388/500, data_time:0.331, net_time:0.449, post_time:0.461
+2019-09-30 14:06:41,068 | upsnet_end2end_test.py | line 279: Batch 390/500, data_time:0.330, net_time:0.449, post_time:0.462
+2019-09-30 14:06:42,218 | upsnet_end2end_test.py | line 279: Batch 392/500, data_time:0.330, net_time:0.449, post_time:0.461
+2019-09-30 14:06:43,370 | upsnet_end2end_test.py | line 279: Batch 394/500, data_time:0.330, net_time:0.449, post_time:0.461
+2019-09-30 14:06:44,775 | upsnet_end2end_test.py | line 279: Batch 396/500, data_time:0.330, net_time:0.449, post_time:0.461
+2019-09-30 14:06:46,225 | upsnet_end2end_test.py | line 279: Batch 398/500, data_time:0.330, net_time:0.449, post_time:0.462
+2019-09-30 14:06:47,448 | upsnet_end2end_test.py | line 279: Batch 400/500, data_time:0.330, net_time:0.449, post_time:0.462
+2019-09-30 14:06:48,693 | upsnet_end2end_test.py | line 279: Batch 402/500, data_time:0.330, net_time:0.450, post_time:0.462
+2019-09-30 14:06:49,649 | upsnet_end2end_test.py | line 279: Batch 404/500, data_time:0.329, net_time:0.450, post_time:0.461
+2019-09-30 14:06:50,910 | upsnet_end2end_test.py | line 279: Batch 406/500, data_time:0.329, net_time:0.449, post_time:0.461
+2019-09-30 14:06:52,025 | upsnet_end2end_test.py | line 279: Batch 408/500, data_time:0.329, net_time:0.449, post_time:0.461
+2019-09-30 14:06:53,080 | upsnet_end2end_test.py | line 279: Batch 410/500, data_time:0.329, net_time:0.449, post_time:0.460
+2019-09-30 14:06:54,383 | upsnet_end2end_test.py | line 279: Batch 412/500, data_time:0.329, net_time:0.449, post_time:0.461
+2019-09-30 14:06:55,542 | upsnet_end2end_test.py | line 279: Batch 414/500, data_time:0.329, net_time:0.449, post_time:0.460
+2019-09-30 14:06:56,668 | upsnet_end2end_test.py | line 279: Batch 416/500, data_time:0.329, net_time:0.449, post_time:0.460
+2019-09-30 14:06:58,046 | upsnet_end2end_test.py | line 279: Batch 418/500, data_time:0.329, net_time:0.449, post_time:0.460
+2019-09-30 14:06:59,370 | upsnet_end2end_test.py | line 279: Batch 420/500, data_time:0.329, net_time:0.450, post_time:0.460
+2019-09-30 14:07:00,607 | upsnet_end2end_test.py | line 279: Batch 422/500, data_time:0.329, net_time:0.450, post_time:0.460
+2019-09-30 14:07:01,947 | upsnet_end2end_test.py | line 279: Batch 424/500, data_time:0.329, net_time:0.450, post_time:0.461
+2019-09-30 14:07:03,121 | upsnet_end2end_test.py | line 279: Batch 426/500, data_time:0.328, net_time:0.450, post_time:0.461
+2019-09-30 14:07:04,033 | upsnet_end2end_test.py | line 279: Batch 428/500, data_time:0.328, net_time:0.450, post_time:0.459
+2019-09-30 14:07:05,183 | upsnet_end2end_test.py | line 279: Batch 430/500, data_time:0.328, net_time:0.450, post_time:0.459
+2019-09-30 14:07:06,474 | upsnet_end2end_test.py | line 279: Batch 432/500, data_time:0.328, net_time:0.450, post_time:0.459
+2019-09-30 14:07:07,551 | upsnet_end2end_test.py | line 279: Batch 434/500, data_time:0.328, net_time:0.450, post_time:0.458
+2019-09-30 14:07:08,539 | upsnet_end2end_test.py | line 279: Batch 436/500, data_time:0.328, net_time:0.450, post_time:0.457
+2019-09-30 14:07:09,675 | upsnet_end2end_test.py | line 279: Batch 438/500, data_time:0.328, net_time:0.450, post_time:0.457
+2019-09-30 14:07:10,753 | upsnet_end2end_test.py | line 279: Batch 440/500, data_time:0.328, net_time:0.450, post_time:0.456
+2019-09-30 14:07:11,787 | upsnet_end2end_test.py | line 279: Batch 442/500, data_time:0.328, net_time:0.450, post_time:0.455
+2019-09-30 14:07:12,796 | upsnet_end2end_test.py | line 279: Batch 444/500, data_time:0.328, net_time:0.450, post_time:0.455
+2019-09-30 14:07:13,783 | upsnet_end2end_test.py | line 279: Batch 446/500, data_time:0.327, net_time:0.450, post_time:0.454
+2019-09-30 14:07:14,739 | upsnet_end2end_test.py | line 279: Batch 448/500, data_time:0.327, net_time:0.449, post_time:0.453
+2019-09-30 14:07:15,765 | upsnet_end2end_test.py | line 279: Batch 450/500, data_time:0.327, net_time:0.449, post_time:0.452
+2019-09-30 14:07:16,832 | upsnet_end2end_test.py | line 279: Batch 452/500, data_time:0.327, net_time:0.449, post_time:0.451
+2019-09-30 14:07:17,839 | upsnet_end2end_test.py | line 279: Batch 454/500, data_time:0.327, net_time:0.449, post_time:0.450
+2019-09-30 14:07:19,092 | upsnet_end2end_test.py | line 279: Batch 456/500, data_time:0.327, net_time:0.449, post_time:0.450
+2019-09-30 14:07:20,127 | upsnet_end2end_test.py | line 279: Batch 458/500, data_time:0.327, net_time:0.449, post_time:0.450
+2019-09-30 14:07:21,160 | upsnet_end2end_test.py | line 279: Batch 460/500, data_time:0.327, net_time:0.449, post_time:0.449
+2019-09-30 14:07:22,278 | upsnet_end2end_test.py | line 279: Batch 462/500, data_time:0.327, net_time:0.449, post_time:0.449
+2019-09-30 14:07:23,263 | upsnet_end2end_test.py | line 279: Batch 464/500, data_time:0.327, net_time:0.449, post_time:0.448
+2019-09-30 14:07:24,862 | upsnet_end2end_test.py | line 279: Batch 466/500, data_time:0.327, net_time:0.449, post_time:0.450
+2019-09-30 14:07:26,323 | upsnet_end2end_test.py | line 279: Batch 468/500, data_time:0.326, net_time:0.449, post_time:0.451
+2019-09-30 14:07:27,803 | upsnet_end2end_test.py | line 279: Batch 470/500, data_time:0.326, net_time:0.449, post_time:0.452
+2019-09-30 14:07:29,455 | upsnet_end2end_test.py | line 279: Batch 472/500, data_time:0.326, net_time:0.449, post_time:0.454
+2019-09-30 14:07:30,908 | upsnet_end2end_test.py | line 279: Batch 474/500, data_time:0.326, net_time:0.449, post_time:0.454
+2019-09-30 14:07:32,431 | upsnet_end2end_test.py | line 279: Batch 476/500, data_time:0.326, net_time:0.449, post_time:0.456
+2019-09-30 14:07:33,740 | upsnet_end2end_test.py | line 279: Batch 478/500, data_time:0.326, net_time:0.449, post_time:0.456
+2019-09-30 14:07:34,922 | upsnet_end2end_test.py | line 279: Batch 480/500, data_time:0.326, net_time:0.449, post_time:0.456
+2019-09-30 14:07:36,284 | upsnet_end2end_test.py | line 279: Batch 482/500, data_time:0.326, net_time:0.449, post_time:0.456
+2019-09-30 14:07:37,370 | upsnet_end2end_test.py | line 279: Batch 484/500, data_time:0.325, net_time:0.449, post_time:0.456
+2019-09-30 14:07:38,430 | upsnet_end2end_test.py | line 279: Batch 486/500, data_time:0.325, net_time:0.449, post_time:0.455
+2019-09-30 14:07:39,539 | upsnet_end2end_test.py | line 279: Batch 488/500, data_time:0.325, net_time:0.449, post_time:0.455
+2019-09-30 14:07:40,426 | upsnet_end2end_test.py | line 279: Batch 490/500, data_time:0.325, net_time:0.449, post_time:0.454
+2019-09-30 14:07:41,580 | upsnet_end2end_test.py | line 279: Batch 492/500, data_time:0.325, net_time:0.449, post_time:0.453
+2019-09-30 14:07:42,985 | upsnet_end2end_test.py | line 279: Batch 494/500, data_time:0.325, net_time:0.449, post_time:0.454
+2019-09-30 14:07:44,152 | upsnet_end2end_test.py | line 279: Batch 496/500, data_time:0.325, net_time:0.449, post_time:0.454
+2019-09-30 14:07:45,172 | upsnet_end2end_test.py | line 279: Batch 498/500, data_time:0.325, net_time:0.449, post_time:0.453
+2019-09-30 14:07:46,138 | upsnet_end2end_test.py | line 279: Batch 500/500, data_time:0.325, net_time:0.449, post_time:0.452
+2019-09-30 14:07:57,381 | base_dataset.py | line 194: Writing bbox results json to: /n/pfister_lab2/Lab/xingyu/InstanceSeg/Outputs/upsnet/cityscapes/upsnet_resnet50_cityscapes_4gpu/val/results/bbox_cityscapes_val_results.json
+2019-09-30 14:08:06,243 | base_dataset.py | line 707: ~~~~ Mean and per-category AP @ IoU=[0.50,0.95] ~~~~
+2019-09-30 14:08:06,244 | base_dataset.py | line 715: 0.386
+2019-09-30 14:08:06,244 | base_dataset.py | line 715: 0.421
+2019-09-30 14:08:06,244 | base_dataset.py | line 715: 0.566
+2019-09-30 14:08:06,244 | base_dataset.py | line 715: 0.334
+2019-09-30 14:08:06,244 | base_dataset.py | line 715: 0.563
+2019-09-30 14:08:06,244 | base_dataset.py | line 715: 0.272
+2019-09-30 14:08:06,245 | base_dataset.py | line 715: 0.284
+2019-09-30 14:08:06,245 | base_dataset.py | line 715: 0.301
+2019-09-30 14:08:06,245 | base_dataset.py | line 717: 0.391
+2019-09-30 14:08:06,245 | base_dataset.py | line 707: ~~~~ Mean and per-category AP @ IoU=[0.50,0.50] ~~~~
+2019-09-30 14:08:06,245 | base_dataset.py | line 715: 0.683
+2019-09-30 14:08:06,246 | base_dataset.py | line 715: 0.711
+2019-09-30 14:08:06,246 | base_dataset.py | line 715: 0.807
+2019-09-30 14:08:06,246 | base_dataset.py | line 715: 0.516
+2019-09-30 14:08:06,246 | base_dataset.py | line 715: 0.766
+2019-09-30 14:08:06,246 | base_dataset.py | line 715: 0.539
+2019-09-30 14:08:06,246 | base_dataset.py | line 715: 0.589
+2019-09-30 14:08:06,246 | base_dataset.py | line 715: 0.599
+2019-09-30 14:08:06,247 | base_dataset.py | line 717: 0.651
+2019-09-30 14:08:06,247 | base_dataset.py | line 719: ~~~~ Summary metrics ~~~~
+2019-09-30 14:23:16,228 | upsnet_end2end_test.py | line 312: unified pano result:
+2019-09-30 14:29:59,497 | base_dataset.py | line 302:           |    PQ     SQ     RQ     N
+2019-09-30 14:29:59,509 | base_dataset.py | line 303: --------------------------------------
+2019-09-30 14:29:59,509 | base_dataset.py | line 305: All       |  59.4   79.7   73.1    19
+2019-09-30 14:29:59,509 | base_dataset.py | line 305: Things    |  54.6   79.3   68.7     8
+2019-09-30 14:29:59,509 | base_dataset.py | line 305: Stuff     |  62.8   80.0   76.3    11
+2019-09-30 14:29:59,510 | base_dataset.py | line 307: IDX |    PQ    SQ    RQ    IoU      TP      FP      FN
+2019-09-30 14:29:59,510 | base_dataset.py | line 310:    0 |  97.8  98.1  99.7  472.7     482       1       2
+2019-09-30 14:29:59,510 | base_dataset.py | line 310:    1 |  75.5  83.6  90.3  346.2     414      37      52
+2019-09-30 14:29:59,510 | base_dataset.py | line 310:    2 |  87.0  89.5  97.3  427.8     478      14      13
+2019-09-30 14:29:59,510 | base_dataset.py | line 310:    3 |  30.4  71.7  42.4   52.3      73      69     129
+2019-09-30 14:29:59,510 | base_dataset.py | line 310:    4 |  32.5  71.8  45.3   58.8      82      91     107
+2019-09-30 14:29:59,510 | base_dataset.py | line 310:    5 |  49.3  65.1  75.7  236.2     363     105     128
+2019-09-30 14:29:59,510 | base_dataset.py | line 310:    6 |  45.8  68.2  67.1  106.4     156      18     135
+2019-09-30 14:29:59,510 | base_dataset.py | line 310:    7 |  63.4  75.7  83.8  274.7     363      30     110
+2019-09-30 14:29:59,510 | base_dataset.py | line 310:    8 |  88.7  90.3  98.2  429.7     476       7      10
+2019-09-30 14:29:59,510 | base_dataset.py | line 310:    9 |  34.1  74.3  45.9   70.6      95      78     146
+2019-09-30 14:29:59,510 | base_dataset.py | line 310:   10 |  86.4  92.1  93.8  376.7     409      21      33
+2019-09-30 14:29:59,510 | base_dataset.py | line 310:   11 |  54.2  76.6  70.7 1608.8    2099     441    1296
+2019-09-30 14:29:59,511 | base_dataset.py | line 310:   12 |  49.8  72.3  68.8  237.3     328      82     215
+2019-09-30 14:29:59,511 | base_dataset.py | line 310:   13 |  67.6  84.1  80.4 2855.7    3397     398    1256
+2019-09-30 14:29:59,511 | base_dataset.py | line 310:   14 |  47.5  86.4  54.9   33.7      39      10      54
+2019-09-30 14:29:59,511 | base_dataset.py | line 310:   15 |  69.5  87.6  79.3   62.2      71      10      27
+2019-09-30 14:29:59,511 | base_dataset.py | line 310:   16 |  58.5  83.3  70.3   10.8      13       1      10
+2019-09-30 14:29:59,511 | base_dataset.py | line 310:   17 |  45.7  72.1  63.4   55.5      77      17      72
+2019-09-30 14:29:59,511 | base_dataset.py | line 310:   18 |  44.1  71.9  61.4  428.3     596     180     569
+2019-09-30 14:30:49,225 | cityscapes.py | line 481: evaluate segmentation:
+2019-09-30 14:30:49,226 | cityscapes.py | line 485: IU_array:
+2019-09-30 14:30:49,226 | cityscapes.py | line 487: 0.98094
+2019-09-30 14:30:49,226 | cityscapes.py | line 487: 0.84404
+2019-09-30 14:30:49,226 | cityscapes.py | line 487: 0.91860
+2019-09-30 14:30:49,226 | cityscapes.py | line 487: 0.51825
+2019-09-30 14:30:49,226 | cityscapes.py | line 487: 0.54848
+2019-09-30 14:30:49,227 | cityscapes.py | line 487: 0.62394
+2019-09-30 14:30:49,227 | cityscapes.py | line 487: 0.66858
+2019-09-30 14:30:49,227 | cityscapes.py | line 487: 0.75205
+2019-09-30 14:30:49,227 | cityscapes.py | line 487: 0.92112
+2019-09-30 14:30:49,227 | cityscapes.py | line 487: 0.63173
+2019-09-30 14:30:49,227 | cityscapes.py | line 487: 0.94606
+2019-09-30 14:30:49,227 | cityscapes.py | line 487: 0.81358
+2019-09-30 14:30:49,227 | cityscapes.py | line 487: 0.62127
+2019-09-30 14:30:49,227 | cityscapes.py | line 487: 0.94341
+2019-09-30 14:30:49,227 | cityscapes.py | line 487: 0.68102
+2019-09-30 14:30:49,227 | cityscapes.py | line 487: 0.84949
+2019-09-30 14:30:49,227 | cityscapes.py | line 487: 0.66976
+2019-09-30 14:30:49,227 | cityscapes.py | line 487: 0.62117
+2019-09-30 14:30:49,227 | cityscapes.py | line 487: 0.76196
+2019-09-30 14:30:49,227 | cityscapes.py | line 488: meanIU:0.75344
+2019-09-30 14:30:49,232 | cityscapes.py | line 492: confusion_matrix:
+2019-09-30 14:30:49,232 | cityscapes.py | line 493: 0.991	0.007	0.   	0.   	0.   	0.   	0.   	0.   	0.   	0.   	0.   	0.   	0.   	0.001	0.   	0.   	0.   	0.   	0.   
+ 0.047	0.921	0.007	0.001	0.003	0.004	0.   	0.   	0.003	0.006	0.   	0.003	0.   	0.003	0.   	0.   	0.   	0.   	0.002
+ 0.   	0.002	0.967	0.001	0.001	0.004	0.001	0.001	0.016	0.   	0.003	0.002	0.   	0.001	0.   	0.   	0.   	0.   	0.001
+ 0.033	0.045	0.197	0.582	0.06 	0.007	0.   	0.   	0.053	0.008	0.   	0.006	0.   	0.005	0.   	0.   	0.   	0.   	0.004
+ 0.006	0.014	0.189	0.044	0.657	0.017	0.   	0.005	0.038	0.005	0.   	0.006	0.   	0.006	0.001	0.   	0.001	0.001	0.013
+ 0.003	0.017	0.134	0.002	0.01 	0.731	0.006	0.006	0.06 	0.004	0.004	0.009	0.   	0.008	0.   	0.001	0.   	0.   	0.006
+ 0.   	0.   	0.101	0.   	0.   	0.04 	0.776	0.004	0.072	0.   	0.005	0.   	0.   	0.   	0.   	0.   	0.   	0.   	0.   
+ 0.006	0.001	0.094	0.001	0.013	0.02 	0.002	0.825	0.025	0.   	0.001	0.004	0.   	0.004	0.001	0.001	0.   	0.   	0.002
+ 0.   	0.002	0.021	0.   	0.001	0.004	0.001	0.001	0.961	0.004	0.003	0.001	0.   	0.001	0.   	0.   	0.   	0.   	0.   
+ 0.015	0.093	0.005	0.011	0.008	0.005	0.   	0.   	0.118	0.738	0.   	0.001	0.   	0.003	0.   	0.   	0.   	0.   	0.002
+ 0.   	0.   	0.009	0.   	0.   	0.002	0.   	0.   	0.011	0.   	0.978	0.   	0.   	0.   	0.   	0.   	0.   	0.   	0.   
+ 0.006	0.007	0.032	0.001	0.001	0.005	0.   	0.001	0.008	0.   	0.   	0.916	0.007	0.007	0.   	0.   	0.   	0.   	0.008
+ 0.003	0.002	0.019	0.001	0.002	0.001	0.   	0.001	0.013	0.   	0.   	0.133	0.734	0.011	0.   	0.002	0.   	0.008	0.069
+ 0.005	0.001	0.006	0.   	0.001	0.001	0.   	0.001	0.004	0.   	0.   	0.002	0.   	0.974	0.002	0.   	0.   	0.   	0.001
+ 0.006	0.002	0.05 	0.007	0.   	0.003	0.001	0.002	0.011	0.   	0.005	0.001	0.001	0.167	0.729	0.015	0.   	0.   	0.   
+ 0.008	0.002	0.026	0.   	0.   	0.004	0.   	0.001	0.011	0.   	0.   	0.002	0.   	0.027	0.002	0.911	0.004	0.   	0.   
+ 0.004	0.002	0.107	0.002	0.006	0.01 	0.001	0.002	0.026	0.002	0.009	0.002	0.   	0.006	0.003	0.123	0.694	0.   	0.003
+ 0.003	0.015	0.028	0.   	0.015	0.008	0.   	0.004	0.005	0.   	0.   	0.043	0.024	0.055	0.002	0.   	0.001	0.724	0.072
+ 0.004	0.01 	0.024	0.001	0.006	0.006	0.   	0.   	0.009	0.003	0.   	0.017	0.024	0.011	0.   	0.   	0.   	0.006	0.88 
